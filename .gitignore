@@ -16,6 +16,7 @@ vendor/*
 !vendor/.gitkeep
 **/.DS_STORE
 **/.DS_Store
+composer.lock
 
 # IDE Files
 #-------------------------
