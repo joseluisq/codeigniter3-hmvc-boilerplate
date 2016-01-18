@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class user_controller extends CI_Controller {
+class User_controller extends CI_Controller {
 
   public function __construct() {
     parent::__construct();
@@ -22,11 +22,11 @@ class user_controller extends CI_Controller {
    * @see http://codeigniter.com/user_guide/general/urls.html
    */
   public function index() {
-    $this->load->model('user_model');
+    $this->load->model('User_model');
 
-    $users = $this->user_model->find_all();
+    $users = $this->User_model->find_all();
 
-    $this->parser->parse('user_view', $users);
+    $this->parser->parse('User_view', $users);
   }
 
 }

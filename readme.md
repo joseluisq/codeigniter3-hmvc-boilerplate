@@ -12,6 +12,9 @@ $ cd codeigniter3-hmvc-boilerplate
 $ composer install
 ```
 
+### MY_Model
+For use `MY_Model` extended class view [this usage link](https://gist.github.com/joseluisq/886027b7d5b765155ea6).
+
 ## License
 MIT license
 

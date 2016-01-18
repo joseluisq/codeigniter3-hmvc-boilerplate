@@ -86,16 +86,18 @@ application/modules
     ├── config
     │   └── routes.php
     ├── controllers
-    │   └── user.php
+    │   └── User_controller.php
+    ├── models
+    │   └── User_model.php
     └── views
-        └── user_message.php
+        └── User_message.php
         </pre>
         
         <h3>User Model</h3>
         
 <pre>
 // user_controller.php  
-$this->user_model->find_all();
+$this->User_model->find_all();
 </pre>
         
         <ul>

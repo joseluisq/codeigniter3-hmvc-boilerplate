@@ -2,11 +2,11 @@
 
 /*
   | ----------------------------
-  | URI ROUTING - Modulo Usuario
+  | URI ROUTING - User Module
   | ----------------------------
   |
-  | Ejemplo:  $route['module_name'] = 'controller_name'
+  | Example:  $route['module_name'] = 'controller_name'
   |
  */
 
-$route['user'] = 'user_controller';
+$route['user'] = 'User_controller';

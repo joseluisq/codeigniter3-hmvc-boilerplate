@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * User Model
  * 
  */
-class user_model extends CI_Model {
+class User_model extends MY_Model {
 
   function find_all() {
     return array('users' => array(
