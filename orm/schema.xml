@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="development" defaultIdMethod="native" defaultPhpNamingMethod="underscore">
+  <table name="user" idMethod="native" phpName="User">
+    <column name="user_id" phpName="UserId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="user_fullname" phpName="UserFullname" type="VARCHAR" size="100" required="true"/>
+    <column name="user_email" phpName="UserEmail" type="VARCHAR" size="40" required="true"/>
+    <column name="user_password" phpName="UserPassword" type="VARCHAR" size="45" required="true"/>
+    <column name="user_dni" phpName="UserDni" type="VARCHAR" size="10" required="true"/>
+    <column name="user_phone" phpName="UserPhone" type="VARCHAR" size="10" required="true"/>
+    <column name="user_registered" phpName="UserRegistered" type="TIMESTAMP" required="true"/>
+    <column name="user_updated" phpName="UserUpdated" type="TIMESTAMP"/>
+    <column name="user_state" phpName="UserState" type="INTEGER" size="1" required="true"/>
+    <unique name="user_email">
+      <unique-column name="user_email"/>
+    </unique>
+    <unique name="user_dni">
+      <unique-column name="user_dni"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+</database>

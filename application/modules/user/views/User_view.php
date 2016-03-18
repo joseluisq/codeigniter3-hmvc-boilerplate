@@ -91,20 +91,21 @@ application/modules
     │   └── User_model.php
     └── views
         └── User_message.php
-        </pre>
+</pre>
         
         <h3>User Model</h3>
         
-<pre>
-// user_controller.php  
+        <pre>
+// User_controller.php  
 $this->User_model->find_all();
 </pre>
+        <strong>Records from database:</strong>
         
-        <ul>
+        <ol>
         {users}
-          <li>{name}</li>
+        <li>{UserFullname} (<a href="#">{UserEmail}</a>)</li>
         {/users}
-        </ul>
+        </ol>
       </div>
 
       <p class="footer">

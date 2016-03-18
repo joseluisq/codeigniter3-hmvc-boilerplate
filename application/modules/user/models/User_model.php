@@ -1,19 +1,25 @@
 <?php
 
+use Propel\Runtime\Exception\PropelException;
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * User Model
  * 
  */
-class User_model extends MY_Model {
+class User_model {
 
+  /**
+   * Find all users
+   * @return array
+   */
   function find_all() {
-    return array('users' => array(
-        array('name' => 'joseluisq'),
-        array('name' => 'daniel'),
-        array('name' => 'lalo')
-    ));
+    try {
+      return UserQuery::create()->find()->toArray();
+    } catch (PropelException $e) {
+      return;
+    }
   }
 
 }

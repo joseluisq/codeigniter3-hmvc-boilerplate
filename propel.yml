@@ -1,0 +1,57 @@
+# Propel configuration
+
+propel:
+  general:
+    project: Propel2 Project
+    version: 1.0.0
+
+  paths:
+    projectDir: orm
+    schemaDir: orm
+    outputDir: orm
+    phpConfDir: orm
+    phpDir: orm/classes
+    sqlDir: sql
+
+  database:
+    connections:
+
+      development:
+        adapter: mysql
+        dsn: mysql:host=localhost;dbname=dbname
+        user: root
+        password:
+
+        classname: Propel\Runtime\Connection\DebugPDO
+        attributes:
+        settings:
+          charset: utf8
+          queries:
+
+      production:
+        adapter: mysql
+        dsn: mysql:host=localhost;dbname=dbname
+        user: root
+        password:
+
+        classname: Propel\Runtime\Connection\DebugPDO
+        attributes:
+        settings:
+          charset: utf8
+          queries:
+
+    adapters:
+      mysql:
+        tableType: InnoDB
+        tableEngineKeyword: ENGINE
+
+  runtime:
+    defaultConnection: development
+    connections:
+      - development
+      - production
+
+  generator:
+    defaultConnection: development
+    connections:
+      - development

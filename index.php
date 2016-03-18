@@ -53,7 +53,7 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+define('ENVIRONMENT', 'development');
 
 /*
  * ---------------------------------------------------------------
@@ -261,4 +261,11 @@ define('VIEWPATH', $view_folder);
  *
  * And away we go...
  */
+
+// Composer autoload
+require_once __DIR__ . '/vendor/autoload.php';
+
+// Propel2 config load
+require_once __DIR__ . '/orm/config.php';
+
 require_once BASEPATH . 'core/CodeIgniter.php';

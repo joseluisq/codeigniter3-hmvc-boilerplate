@@ -26,7 +26,9 @@ class User_controller extends CI_Controller {
 
     $users = $this->User_model->find_all();
 
-    $this->parser->parse('User_view', $users);
+    $this->parser->parse('User_view', array(
+      'users' => $users
+    ));
   }
 
 }
