@@ -109,7 +109,7 @@ class Request {
         break;
       case 'put':
         if ($this->is_put()) {
-          $values = $this->raw_request_data();
+          $values = $this->raw_request_data($key);
           break;
         }
 
@@ -131,9 +131,9 @@ class Request {
    * @return mixed
    */
   private function raw_request_data($key) {
-    $values = $this->parse_raw_http_request($key);
+    $values = $this->parse_raw_http_request();
 
-    if ($key) {
+    if (!empty($key)) {
       $values = isset($values[$key]) ? $values[$key] : NULL;
     }
 
