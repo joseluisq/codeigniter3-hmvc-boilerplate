@@ -1,23 +1,22 @@
 <?php
-
 $serviceContainer = \Propel\Runtime\Propel::getServiceContainer();
 $serviceContainer->checkVersion('2.0.0-dev');
 $serviceContainer->setAdapterClass('development', 'mysql');
 $manager = new \Propel\Runtime\Connection\ConnectionManagerSingle();
-$manager->setConfiguration(array(
-  'dsn' => 'mysql:host=localhost;dbname=dbname',
+$manager->setConfiguration(array (
+  'dsn' => 'mysql:host=localhost;dbname=dbcodeigniter',
   'user' => 'root',
-  'password' => '',
+  'password' => 'root',
   'classname' => 'Propel\\Runtime\\Connection\\DebugPDO',
   'attributes' =>
-  array(
+  array (
     'ATTR_EMULATE_PREPARES' => false,
   ),
   'settings' =>
-  array(
+  array (
     'charset' => 'utf8',
     'queries' =>
-    array(
+    array (
     ),
   ),
 ));
@@ -25,20 +24,20 @@ $manager->setName('development');
 $serviceContainer->setConnectionManager('development', $manager);
 $serviceContainer->setAdapterClass('production', 'mysql');
 $manager = new \Propel\Runtime\Connection\ConnectionManagerSingle();
-$manager->setConfiguration(array(
-  'dsn' => 'mysql:host=localhost;dbname=dbname',
+$manager->setConfiguration(array (
+  'dsn' => 'mysql:host=localhost;dbname=dbcodeigniter',
   'user' => 'root',
-  'password' => '',
+  'password' => 'root',
   'classname' => 'Propel\\Runtime\\Connection\\DebugPDO',
   'attributes' =>
-  array(
+  array (
     'ATTR_EMULATE_PREPARES' => false,
   ),
   'settings' =>
-  array(
+  array (
     'charset' => 'utf8',
     'queries' =>
-    array(
+    array (
     ),
   ),
 ));

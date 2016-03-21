@@ -2,6 +2,11 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Default Timezone
+ */
+date_default_timezone_set('America/Lima');
+
 /*
   |--------------------------------------------------------------------------
   | Base Site URL

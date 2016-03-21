@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User_controller extends CI_Controller {
+class User_controller extends MY_Controller {
 
   public function __construct() {
     parent::__construct();
@@ -21,14 +21,15 @@ class User_controller extends CI_Controller {
    * 
    * @see http://codeigniter.com/user_guide/general/urls.html
    */
-  public function index() {
+  function index() {
     $this->load->model('User_model');
 
-    $users = $this->User_model->find_all();
-
-    $this->parser->parse('User_view', array(
-      'users' => $users
-    ));
+    if ($this->request->is_get()) {
+      $users = $this->User_model->find_all();
+      $this->response->json($users);
+    } else {
+      $this->response->method_not_allowed();
+    }
   }
 
 }

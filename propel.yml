@@ -18,9 +18,9 @@ propel:
 
       development:
         adapter: mysql
-        dsn: mysql:host=localhost;dbname=dbname
+        dsn: mysql:host=localhost;dbname=dbcodeigniter
         user: root
-        password:
+        password: root
 
         classname: Propel\Runtime\Connection\DebugPDO
         attributes:
@@ -30,9 +30,9 @@ propel:
 
       production:
         adapter: mysql
-        dsn: mysql:host=localhost;dbname=dbname
+        dsn: mysql:host=localhost;dbname=dbcodeigniter
         user: root
-        password:
+        password: root
 
         classname: Propel\Runtime\Connection\DebugPDO
         attributes:
