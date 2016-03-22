@@ -9,4 +9,4 @@
   |
  */
 
-$route['user'] = 'User_controller';
+$route['user'] = 'User_controller/index_get';

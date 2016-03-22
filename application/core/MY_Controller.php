@@ -19,17 +19,29 @@ class MY_Controller extends CI_Controller {
     parent::__construct();
 
     $load = $this->load;
+    $input = $this->input;
 
     $this->load->library('Response', $load);
     $this->load->library('Request', array(
       'load' => $load,
-      'input' => $this->input
+      'input' => $input
     ));
+
+    $request = $this->request;
+    $response = $this->response;
 
     $this->load->library('Middleware', array(
       'load' => $load,
-      'request' => $this->request,
-      'response' => $this->response
+      'request' => $request,
+      'response' => $response
+    ));
+
+    $this->load->library('RESTful', array(
+      'load' => $load,
+      'input' => $input,
+      'request' => $request,
+      'response' => $response,
+      'router' => $this->router
     ));
   }
 

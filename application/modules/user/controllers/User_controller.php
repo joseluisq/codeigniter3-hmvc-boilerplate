@@ -17,15 +17,11 @@ class User_controller extends MY_Controller {
    * 
    * @see http://codeigniter.com/user_guide/general/urls.html
    */
-  function index() {
+  function index_get() {
     $this->load->model('User_model');
 
-    if ($this->request->is_get()) {
-      $users = $this->User_model->find_all();
-      $this->response->json($users);
-    } else {
-      $this->response->method_not_allowed();
-    }
+    $users = $this->User_model->find_all();
+    $this->response->output($users);
   }
 
 }
