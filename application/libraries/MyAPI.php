@@ -93,7 +93,7 @@ class MyAPI {
     $opts[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
 
     if ($method === 'GET') {
-      $url = $url . '?' . (http_build_query($params));
+      $url = $url . (empty($params) ? '' : '?' . (http_build_query($params)));
     } else {
       $opts[CURLOPT_POSTFIELDS] = $params;
     }
