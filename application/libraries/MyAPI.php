@@ -3,7 +3,7 @@
 /**
  * MyAPI
  * 
- * Small API handler class for custom API Server interaction
+ * Lite API handler for custom API interactions
  * 
  * @version   1.0.0
  * @author    José Luis Quintana <http://git.io/joseluisq>
@@ -45,10 +45,8 @@ class MyAPI {
    */
   static function create($options = array()) {
     $opts = array_merge(self::$_options, $options);
-    $data_type = $opts['data_type'];
 
     $header = $opts['header'];
-    $header['content-type'] = static::$_supported_formats[$data_type];
     $header['api-key'] = $opts['api_key'];
 
     $headers = array();
@@ -80,28 +78,21 @@ class MyAPI {
    *
    * @return string The response text
    */
-  static function create_request($url, $params, $method = 'GET', $ch = NULL, $file_upload = FALSE) {
+  static function create_request($url, $params, $method = 'GET', $ch = NULL) {
     if (!$ch) {
       $ch = curl_init();
     }
 
     $opts = self::$_CURL_OPTS;
     $header = self::$_options['header'];
-
     $base_url = self::$_options['base_url'];
+
     $url = $base_url . $url;
-
-    $opts[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
-
-    if ($file_upload) {
-      $opts[CURLOPT_POSTFIELDS] = $params;
-    } else {
-      $opts[CURLOPT_POSTFIELDS] = http_build_query($params, null, '&');
-    }
-
     $opts[CURLOPT_URL] = $url;
 
     $opts[CURLOPT_HTTPHEADER] = $header;
+    $opts[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
+    $opts[CURLOPT_POSTFIELDS] = $params;
 
     curl_setopt_array($ch, $opts);
 
