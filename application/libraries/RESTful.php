@@ -49,7 +49,7 @@ class RESTful {
         $this->response->method_not_allowed();
         $this->response->output(array(
           'message' => 'Method Not Allowed'
-        ));;
+        ));
       }
     }
   }
