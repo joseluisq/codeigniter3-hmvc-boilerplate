@@ -88,11 +88,17 @@ class MyAPI {
     $base_url = self::$_options['base_url'];
 
     $url = $base_url . $url;
-    $opts[CURLOPT_URL] = $url;
 
     $opts[CURLOPT_HTTPHEADER] = $header;
     $opts[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
-    $opts[CURLOPT_POSTFIELDS] = $params;
+
+    if ($method === 'GET') {
+      $url = $url . '?' . (http_build_query($params));
+    } else {
+      $opts[CURLOPT_POSTFIELDS] = $params;
+    }
+
+    $opts[CURLOPT_URL] = $url;
 
     curl_setopt_array($ch, $opts);
 
