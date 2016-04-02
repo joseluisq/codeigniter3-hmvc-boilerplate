@@ -35,7 +35,7 @@ class Response {
    * @param mixed $data
    */
   function xml($data) {
-    header('Content-Type: text/xml; charset=utf-8');
+    header('Content-Type: application/xml; charset=utf-8');
     echo $this->to_xml($data);
   }
 

@@ -128,8 +128,8 @@ class UserTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('UserId', 'UserFullname', 'UserEmail', 'UserPassword', 'UserDni', 'UserPhone', 'UserRegistered', 'UserUpdated', 'UserState', ),
-        self::TYPE_CAMELNAME     => array('userId', 'userFullname', 'userEmail', 'userPassword', 'userDni', 'userPhone', 'userRegistered', 'userUpdated', 'userState', ),
+        self::TYPE_PHPNAME       => array('id', 'fullname', 'email', 'password', 'dni', 'phone', 'registered', 'updated', 'state', ),
+        self::TYPE_CAMELNAME     => array('id', 'fullname', 'email', 'password', 'dni', 'phone', 'registered', 'updated', 'state', ),
         self::TYPE_COLNAME       => array(UserTableMap::COL_USER_ID, UserTableMap::COL_USER_FULLNAME, UserTableMap::COL_USER_EMAIL, UserTableMap::COL_USER_PASSWORD, UserTableMap::COL_USER_DNI, UserTableMap::COL_USER_PHONE, UserTableMap::COL_USER_REGISTERED, UserTableMap::COL_USER_UPDATED, UserTableMap::COL_USER_STATE, ),
         self::TYPE_FIELDNAME     => array('user_id', 'user_fullname', 'user_email', 'user_password', 'user_dni', 'user_phone', 'user_registered', 'user_updated', 'user_state', ),
         self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, )
@@ -142,8 +142,8 @@ class UserTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('UserId' => 0, 'UserFullname' => 1, 'UserEmail' => 2, 'UserPassword' => 3, 'UserDni' => 4, 'UserPhone' => 5, 'UserRegistered' => 6, 'UserUpdated' => 7, 'UserState' => 8, ),
-        self::TYPE_CAMELNAME     => array('userId' => 0, 'userFullname' => 1, 'userEmail' => 2, 'userPassword' => 3, 'userDni' => 4, 'userPhone' => 5, 'userRegistered' => 6, 'userUpdated' => 7, 'userState' => 8, ),
+        self::TYPE_PHPNAME       => array('id' => 0, 'fullname' => 1, 'email' => 2, 'password' => 3, 'dni' => 4, 'phone' => 5, 'registered' => 6, 'updated' => 7, 'state' => 8, ),
+        self::TYPE_CAMELNAME     => array('id' => 0, 'fullname' => 1, 'email' => 2, 'password' => 3, 'dni' => 4, 'phone' => 5, 'registered' => 6, 'updated' => 7, 'state' => 8, ),
         self::TYPE_COLNAME       => array(UserTableMap::COL_USER_ID => 0, UserTableMap::COL_USER_FULLNAME => 1, UserTableMap::COL_USER_EMAIL => 2, UserTableMap::COL_USER_PASSWORD => 3, UserTableMap::COL_USER_DNI => 4, UserTableMap::COL_USER_PHONE => 5, UserTableMap::COL_USER_REGISTERED => 6, UserTableMap::COL_USER_UPDATED => 7, UserTableMap::COL_USER_STATE => 8, ),
         self::TYPE_FIELDNAME     => array('user_id' => 0, 'user_fullname' => 1, 'user_email' => 2, 'user_password' => 3, 'user_dni' => 4, 'user_phone' => 5, 'user_registered' => 6, 'user_updated' => 7, 'user_state' => 8, ),
         self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, )
@@ -166,15 +166,15 @@ class UserTableMap extends TableMap
         $this->setPackage('');
         $this->setUseIdGenerator(true);
         // columns
-        $this->addPrimaryKey('user_id', 'UserId', 'INTEGER', true, null, null);
-        $this->addColumn('user_fullname', 'UserFullname', 'VARCHAR', true, 100, null);
-        $this->addColumn('user_email', 'UserEmail', 'VARCHAR', true, 40, null);
-        $this->addColumn('user_password', 'UserPassword', 'VARCHAR', true, 45, null);
-        $this->addColumn('user_dni', 'UserDni', 'VARCHAR', true, 10, null);
-        $this->addColumn('user_phone', 'UserPhone', 'VARCHAR', true, 10, null);
-        $this->addColumn('user_registered', 'UserRegistered', 'TIMESTAMP', true, null, null);
-        $this->addColumn('user_updated', 'UserUpdated', 'TIMESTAMP', false, null, null);
-        $this->addColumn('user_state', 'UserState', 'INTEGER', true, 1, null);
+        $this->addPrimaryKey('user_id', 'id', 'INTEGER', true, null, null);
+        $this->addColumn('user_fullname', 'fullname', 'VARCHAR', true, 100, null);
+        $this->addColumn('user_email', 'email', 'VARCHAR', true, 40, null);
+        $this->addColumn('user_password', 'password', 'VARCHAR', true, 45, null);
+        $this->addColumn('user_dni', 'dni', 'VARCHAR', true, 10, null);
+        $this->addColumn('user_phone', 'phone', 'VARCHAR', true, 10, null);
+        $this->addColumn('user_registered', 'registered', 'TIMESTAMP', true, null, null);
+        $this->addColumn('user_updated', 'updated', 'TIMESTAMP', false, null, null);
+        $this->addColumn('user_state', 'state', 'INTEGER', true, 1, null);
     } // initialize()
 
     /**
@@ -200,11 +200,11 @@ class UserTableMap extends TableMap
     public static function getPrimaryKeyHashFromRow($row, $offset = 0, $indexType = TableMap::TYPE_NUM)
     {
         // If the PK cannot be derived from the row, return NULL.
-        if ($row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('UserId', TableMap::TYPE_PHPNAME, $indexType)] === null) {
+        if ($row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('id', TableMap::TYPE_PHPNAME, $indexType)] === null) {
             return null;
         }
 
-        return null === $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('UserId', TableMap::TYPE_PHPNAME, $indexType)] || is_scalar($row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('UserId', TableMap::TYPE_PHPNAME, $indexType)]) || is_callable([$row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('UserId', TableMap::TYPE_PHPNAME, $indexType)], '__toString']) ? (string) $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('UserId', TableMap::TYPE_PHPNAME, $indexType)] : $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('UserId', TableMap::TYPE_PHPNAME, $indexType)];
+        return null === $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('id', TableMap::TYPE_PHPNAME, $indexType)] || is_scalar($row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('id', TableMap::TYPE_PHPNAME, $indexType)]) || is_callable([$row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('id', TableMap::TYPE_PHPNAME, $indexType)], '__toString']) ? (string) $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('id', TableMap::TYPE_PHPNAME, $indexType)] : $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('id', TableMap::TYPE_PHPNAME, $indexType)];
     }
 
     /**
@@ -224,7 +224,7 @@ class UserTableMap extends TableMap
         return (int) $row[
             $indexType == TableMap::TYPE_NUM
                 ? 0 + $offset
-                : self::translateFieldName('UserId', TableMap::TYPE_PHPNAME, $indexType)
+                : self::translateFieldName('id', TableMap::TYPE_PHPNAME, $indexType)
         ];
     }
 

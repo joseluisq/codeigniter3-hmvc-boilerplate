@@ -22,4 +22,16 @@ class User_model {
     }
   }
 
+  /**
+   * Find one user by primary key
+   * @return array
+   */
+  function find_one_by_id($id) {
+    try {
+      return UserQuery::create()->findPk($id)->toArray();
+    } catch (PropelException $e) {
+      return;
+    }
+  }
+
 }

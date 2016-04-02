@@ -19,25 +19,25 @@ use Propel\Runtime\Exception\PropelException;
  *
  *
  *
- * @method     ChildUserQuery orderByUserId($order = Criteria::ASC) Order by the user_id column
- * @method     ChildUserQuery orderByUserFullname($order = Criteria::ASC) Order by the user_fullname column
- * @method     ChildUserQuery orderByUserEmail($order = Criteria::ASC) Order by the user_email column
- * @method     ChildUserQuery orderByUserPassword($order = Criteria::ASC) Order by the user_password column
- * @method     ChildUserQuery orderByUserDni($order = Criteria::ASC) Order by the user_dni column
- * @method     ChildUserQuery orderByUserPhone($order = Criteria::ASC) Order by the user_phone column
- * @method     ChildUserQuery orderByUserRegistered($order = Criteria::ASC) Order by the user_registered column
- * @method     ChildUserQuery orderByUserUpdated($order = Criteria::ASC) Order by the user_updated column
- * @method     ChildUserQuery orderByUserState($order = Criteria::ASC) Order by the user_state column
+ * @method     ChildUserQuery orderByid($order = Criteria::ASC) Order by the user_id column
+ * @method     ChildUserQuery orderByfullname($order = Criteria::ASC) Order by the user_fullname column
+ * @method     ChildUserQuery orderByemail($order = Criteria::ASC) Order by the user_email column
+ * @method     ChildUserQuery orderBypassword($order = Criteria::ASC) Order by the user_password column
+ * @method     ChildUserQuery orderBydni($order = Criteria::ASC) Order by the user_dni column
+ * @method     ChildUserQuery orderByphone($order = Criteria::ASC) Order by the user_phone column
+ * @method     ChildUserQuery orderByregistered($order = Criteria::ASC) Order by the user_registered column
+ * @method     ChildUserQuery orderByupdated($order = Criteria::ASC) Order by the user_updated column
+ * @method     ChildUserQuery orderBystate($order = Criteria::ASC) Order by the user_state column
  *
- * @method     ChildUserQuery groupByUserId() Group by the user_id column
- * @method     ChildUserQuery groupByUserFullname() Group by the user_fullname column
- * @method     ChildUserQuery groupByUserEmail() Group by the user_email column
- * @method     ChildUserQuery groupByUserPassword() Group by the user_password column
- * @method     ChildUserQuery groupByUserDni() Group by the user_dni column
- * @method     ChildUserQuery groupByUserPhone() Group by the user_phone column
- * @method     ChildUserQuery groupByUserRegistered() Group by the user_registered column
- * @method     ChildUserQuery groupByUserUpdated() Group by the user_updated column
- * @method     ChildUserQuery groupByUserState() Group by the user_state column
+ * @method     ChildUserQuery groupByid() Group by the user_id column
+ * @method     ChildUserQuery groupByfullname() Group by the user_fullname column
+ * @method     ChildUserQuery groupByemail() Group by the user_email column
+ * @method     ChildUserQuery groupBypassword() Group by the user_password column
+ * @method     ChildUserQuery groupBydni() Group by the user_dni column
+ * @method     ChildUserQuery groupByphone() Group by the user_phone column
+ * @method     ChildUserQuery groupByregistered() Group by the user_registered column
+ * @method     ChildUserQuery groupByupdated() Group by the user_updated column
+ * @method     ChildUserQuery groupBystate() Group by the user_state column
  *
  * @method     ChildUserQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildUserQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -50,39 +50,39 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildUser findOne(ConnectionInterface $con = null) Return the first ChildUser matching the query
  * @method     ChildUser findOneOrCreate(ConnectionInterface $con = null) Return the first ChildUser matching the query, or a new ChildUser object populated from the query conditions when no match is found
  *
- * @method     ChildUser findOneByUserId(int $user_id) Return the first ChildUser filtered by the user_id column
- * @method     ChildUser findOneByUserFullname(string $user_fullname) Return the first ChildUser filtered by the user_fullname column
- * @method     ChildUser findOneByUserEmail(string $user_email) Return the first ChildUser filtered by the user_email column
- * @method     ChildUser findOneByUserPassword(string $user_password) Return the first ChildUser filtered by the user_password column
- * @method     ChildUser findOneByUserDni(string $user_dni) Return the first ChildUser filtered by the user_dni column
- * @method     ChildUser findOneByUserPhone(string $user_phone) Return the first ChildUser filtered by the user_phone column
- * @method     ChildUser findOneByUserRegistered(string $user_registered) Return the first ChildUser filtered by the user_registered column
- * @method     ChildUser findOneByUserUpdated(string $user_updated) Return the first ChildUser filtered by the user_updated column
- * @method     ChildUser findOneByUserState(int $user_state) Return the first ChildUser filtered by the user_state column *
+ * @method     ChildUser findOneByid(int $user_id) Return the first ChildUser filtered by the user_id column
+ * @method     ChildUser findOneByfullname(string $user_fullname) Return the first ChildUser filtered by the user_fullname column
+ * @method     ChildUser findOneByemail(string $user_email) Return the first ChildUser filtered by the user_email column
+ * @method     ChildUser findOneBypassword(string $user_password) Return the first ChildUser filtered by the user_password column
+ * @method     ChildUser findOneBydni(string $user_dni) Return the first ChildUser filtered by the user_dni column
+ * @method     ChildUser findOneByphone(string $user_phone) Return the first ChildUser filtered by the user_phone column
+ * @method     ChildUser findOneByregistered(string $user_registered) Return the first ChildUser filtered by the user_registered column
+ * @method     ChildUser findOneByupdated(string $user_updated) Return the first ChildUser filtered by the user_updated column
+ * @method     ChildUser findOneBystate(int $user_state) Return the first ChildUser filtered by the user_state column *
 
  * @method     ChildUser requirePk($key, ConnectionInterface $con = null) Return the ChildUser by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildUser requireOne(ConnectionInterface $con = null) Return the first ChildUser matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
- * @method     ChildUser requireOneByUserId(int $user_id) Return the first ChildUser filtered by the user_id column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
- * @method     ChildUser requireOneByUserFullname(string $user_fullname) Return the first ChildUser filtered by the user_fullname column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
- * @method     ChildUser requireOneByUserEmail(string $user_email) Return the first ChildUser filtered by the user_email column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
- * @method     ChildUser requireOneByUserPassword(string $user_password) Return the first ChildUser filtered by the user_password column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
- * @method     ChildUser requireOneByUserDni(string $user_dni) Return the first ChildUser filtered by the user_dni column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
- * @method     ChildUser requireOneByUserPhone(string $user_phone) Return the first ChildUser filtered by the user_phone column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
- * @method     ChildUser requireOneByUserRegistered(string $user_registered) Return the first ChildUser filtered by the user_registered column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
- * @method     ChildUser requireOneByUserUpdated(string $user_updated) Return the first ChildUser filtered by the user_updated column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
- * @method     ChildUser requireOneByUserState(int $user_state) Return the first ChildUser filtered by the user_state column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneByid(int $user_id) Return the first ChildUser filtered by the user_id column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneByfullname(string $user_fullname) Return the first ChildUser filtered by the user_fullname column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneByemail(string $user_email) Return the first ChildUser filtered by the user_email column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneBypassword(string $user_password) Return the first ChildUser filtered by the user_password column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneBydni(string $user_dni) Return the first ChildUser filtered by the user_dni column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneByphone(string $user_phone) Return the first ChildUser filtered by the user_phone column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneByregistered(string $user_registered) Return the first ChildUser filtered by the user_registered column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneByupdated(string $user_updated) Return the first ChildUser filtered by the user_updated column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneBystate(int $user_state) Return the first ChildUser filtered by the user_state column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildUser[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildUser objects based on current ModelCriteria
- * @method     ChildUser[]|ObjectCollection findByUserId(int $user_id) Return ChildUser objects filtered by the user_id column
- * @method     ChildUser[]|ObjectCollection findByUserFullname(string $user_fullname) Return ChildUser objects filtered by the user_fullname column
- * @method     ChildUser[]|ObjectCollection findByUserEmail(string $user_email) Return ChildUser objects filtered by the user_email column
- * @method     ChildUser[]|ObjectCollection findByUserPassword(string $user_password) Return ChildUser objects filtered by the user_password column
- * @method     ChildUser[]|ObjectCollection findByUserDni(string $user_dni) Return ChildUser objects filtered by the user_dni column
- * @method     ChildUser[]|ObjectCollection findByUserPhone(string $user_phone) Return ChildUser objects filtered by the user_phone column
- * @method     ChildUser[]|ObjectCollection findByUserRegistered(string $user_registered) Return ChildUser objects filtered by the user_registered column
- * @method     ChildUser[]|ObjectCollection findByUserUpdated(string $user_updated) Return ChildUser objects filtered by the user_updated column
- * @method     ChildUser[]|ObjectCollection findByUserState(int $user_state) Return ChildUser objects filtered by the user_state column
+ * @method     ChildUser[]|ObjectCollection findByid(int $user_id) Return ChildUser objects filtered by the user_id column
+ * @method     ChildUser[]|ObjectCollection findByfullname(string $user_fullname) Return ChildUser objects filtered by the user_fullname column
+ * @method     ChildUser[]|ObjectCollection findByemail(string $user_email) Return ChildUser objects filtered by the user_email column
+ * @method     ChildUser[]|ObjectCollection findBypassword(string $user_password) Return ChildUser objects filtered by the user_password column
+ * @method     ChildUser[]|ObjectCollection findBydni(string $user_dni) Return ChildUser objects filtered by the user_dni column
+ * @method     ChildUser[]|ObjectCollection findByphone(string $user_phone) Return ChildUser objects filtered by the user_phone column
+ * @method     ChildUser[]|ObjectCollection findByregistered(string $user_registered) Return ChildUser objects filtered by the user_registered column
+ * @method     ChildUser[]|ObjectCollection findByupdated(string $user_updated) Return ChildUser objects filtered by the user_updated column
+ * @method     ChildUser[]|ObjectCollection findBystate(int $user_state) Return ChildUser objects filtered by the user_state column
  * @method     ChildUser[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -270,12 +270,12 @@ abstract class UserQuery extends ModelCriteria
      *
      * Example usage:
      * <code>
-     * $query->filterByUserId(1234); // WHERE user_id = 1234
-     * $query->filterByUserId(array(12, 34)); // WHERE user_id IN (12, 34)
-     * $query->filterByUserId(array('min' => 12)); // WHERE user_id > 12
+     * $query->filterByid(1234); // WHERE user_id = 1234
+     * $query->filterByid(array(12, 34)); // WHERE user_id IN (12, 34)
+     * $query->filterByid(array('min' => 12)); // WHERE user_id > 12
      * </code>
      *
-     * @param     mixed $userId The value to use as filter.
+     * @param     mixed $id The value to use as filter.
      *              Use scalar values for equality.
      *              Use array values for in_array() equivalent.
      *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
@@ -283,16 +283,16 @@ abstract class UserQuery extends ModelCriteria
      *
      * @return $this|ChildUserQuery The current query, for fluid interface
      */
-    public function filterByUserId($userId = null, $comparison = null)
+    public function filterByid($id = null, $comparison = null)
     {
-        if (is_array($userId)) {
+        if (is_array($id)) {
             $useMinMax = false;
-            if (isset($userId['min'])) {
-                $this->addUsingAlias(UserTableMap::COL_USER_ID, $userId['min'], Criteria::GREATER_EQUAL);
+            if (isset($id['min'])) {
+                $this->addUsingAlias(UserTableMap::COL_USER_ID, $id['min'], Criteria::GREATER_EQUAL);
                 $useMinMax = true;
             }
-            if (isset($userId['max'])) {
-                $this->addUsingAlias(UserTableMap::COL_USER_ID, $userId['max'], Criteria::LESS_EQUAL);
+            if (isset($id['max'])) {
+                $this->addUsingAlias(UserTableMap::COL_USER_ID, $id['max'], Criteria::LESS_EQUAL);
                 $useMinMax = true;
             }
             if ($useMinMax) {
@@ -303,7 +303,7 @@ abstract class UserQuery extends ModelCriteria
             }
         }
 
-        return $this->addUsingAlias(UserTableMap::COL_USER_ID, $userId, $comparison);
+        return $this->addUsingAlias(UserTableMap::COL_USER_ID, $id, $comparison);
     }
 
     /**
@@ -311,28 +311,28 @@ abstract class UserQuery extends ModelCriteria
      *
      * Example usage:
      * <code>
-     * $query->filterByUserFullname('fooValue');   // WHERE user_fullname = 'fooValue'
-     * $query->filterByUserFullname('%fooValue%'); // WHERE user_fullname LIKE '%fooValue%'
+     * $query->filterByfullname('fooValue');   // WHERE user_fullname = 'fooValue'
+     * $query->filterByfullname('%fooValue%'); // WHERE user_fullname LIKE '%fooValue%'
      * </code>
      *
-     * @param     string $userFullname The value to use as filter.
+     * @param     string $fullname The value to use as filter.
      *              Accepts wildcards (* and % trigger a LIKE)
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
      * @return $this|ChildUserQuery The current query, for fluid interface
      */
-    public function filterByUserFullname($userFullname = null, $comparison = null)
+    public function filterByfullname($fullname = null, $comparison = null)
     {
         if (null === $comparison) {
-            if (is_array($userFullname)) {
+            if (is_array($fullname)) {
                 $comparison = Criteria::IN;
-            } elseif (preg_match('/[\%\*]/', $userFullname)) {
-                $userFullname = str_replace('*', '%', $userFullname);
+            } elseif (preg_match('/[\%\*]/', $fullname)) {
+                $fullname = str_replace('*', '%', $fullname);
                 $comparison = Criteria::LIKE;
             }
         }
 
-        return $this->addUsingAlias(UserTableMap::COL_USER_FULLNAME, $userFullname, $comparison);
+        return $this->addUsingAlias(UserTableMap::COL_USER_FULLNAME, $fullname, $comparison);
     }
 
     /**
@@ -340,28 +340,28 @@ abstract class UserQuery extends ModelCriteria
      *
      * Example usage:
      * <code>
-     * $query->filterByUserEmail('fooValue');   // WHERE user_email = 'fooValue'
-     * $query->filterByUserEmail('%fooValue%'); // WHERE user_email LIKE '%fooValue%'
+     * $query->filterByemail('fooValue');   // WHERE user_email = 'fooValue'
+     * $query->filterByemail('%fooValue%'); // WHERE user_email LIKE '%fooValue%'
      * </code>
      *
-     * @param     string $userEmail The value to use as filter.
+     * @param     string $email The value to use as filter.
      *              Accepts wildcards (* and % trigger a LIKE)
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
      * @return $this|ChildUserQuery The current query, for fluid interface
      */
-    public function filterByUserEmail($userEmail = null, $comparison = null)
+    public function filterByemail($email = null, $comparison = null)
     {
         if (null === $comparison) {
-            if (is_array($userEmail)) {
+            if (is_array($email)) {
                 $comparison = Criteria::IN;
-            } elseif (preg_match('/[\%\*]/', $userEmail)) {
-                $userEmail = str_replace('*', '%', $userEmail);
+            } elseif (preg_match('/[\%\*]/', $email)) {
+                $email = str_replace('*', '%', $email);
                 $comparison = Criteria::LIKE;
             }
         }
 
-        return $this->addUsingAlias(UserTableMap::COL_USER_EMAIL, $userEmail, $comparison);
+        return $this->addUsingAlias(UserTableMap::COL_USER_EMAIL, $email, $comparison);
     }
 
     /**
@@ -369,28 +369,28 @@ abstract class UserQuery extends ModelCriteria
      *
      * Example usage:
      * <code>
-     * $query->filterByUserPassword('fooValue');   // WHERE user_password = 'fooValue'
-     * $query->filterByUserPassword('%fooValue%'); // WHERE user_password LIKE '%fooValue%'
+     * $query->filterBypassword('fooValue');   // WHERE user_password = 'fooValue'
+     * $query->filterBypassword('%fooValue%'); // WHERE user_password LIKE '%fooValue%'
      * </code>
      *
-     * @param     string $userPassword The value to use as filter.
+     * @param     string $password The value to use as filter.
      *              Accepts wildcards (* and % trigger a LIKE)
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
      * @return $this|ChildUserQuery The current query, for fluid interface
      */
-    public function filterByUserPassword($userPassword = null, $comparison = null)
+    public function filterBypassword($password = null, $comparison = null)
     {
         if (null === $comparison) {
-            if (is_array($userPassword)) {
+            if (is_array($password)) {
                 $comparison = Criteria::IN;
-            } elseif (preg_match('/[\%\*]/', $userPassword)) {
-                $userPassword = str_replace('*', '%', $userPassword);
+            } elseif (preg_match('/[\%\*]/', $password)) {
+                $password = str_replace('*', '%', $password);
                 $comparison = Criteria::LIKE;
             }
         }
 
-        return $this->addUsingAlias(UserTableMap::COL_USER_PASSWORD, $userPassword, $comparison);
+        return $this->addUsingAlias(UserTableMap::COL_USER_PASSWORD, $password, $comparison);
     }
 
     /**
@@ -398,28 +398,28 @@ abstract class UserQuery extends ModelCriteria
      *
      * Example usage:
      * <code>
-     * $query->filterByUserDni('fooValue');   // WHERE user_dni = 'fooValue'
-     * $query->filterByUserDni('%fooValue%'); // WHERE user_dni LIKE '%fooValue%'
+     * $query->filterBydni('fooValue');   // WHERE user_dni = 'fooValue'
+     * $query->filterBydni('%fooValue%'); // WHERE user_dni LIKE '%fooValue%'
      * </code>
      *
-     * @param     string $userDni The value to use as filter.
+     * @param     string $dni The value to use as filter.
      *              Accepts wildcards (* and % trigger a LIKE)
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
      * @return $this|ChildUserQuery The current query, for fluid interface
      */
-    public function filterByUserDni($userDni = null, $comparison = null)
+    public function filterBydni($dni = null, $comparison = null)
     {
         if (null === $comparison) {
-            if (is_array($userDni)) {
+            if (is_array($dni)) {
                 $comparison = Criteria::IN;
-            } elseif (preg_match('/[\%\*]/', $userDni)) {
-                $userDni = str_replace('*', '%', $userDni);
+            } elseif (preg_match('/[\%\*]/', $dni)) {
+                $dni = str_replace('*', '%', $dni);
                 $comparison = Criteria::LIKE;
             }
         }
 
-        return $this->addUsingAlias(UserTableMap::COL_USER_DNI, $userDni, $comparison);
+        return $this->addUsingAlias(UserTableMap::COL_USER_DNI, $dni, $comparison);
     }
 
     /**
@@ -427,28 +427,28 @@ abstract class UserQuery extends ModelCriteria
      *
      * Example usage:
      * <code>
-     * $query->filterByUserPhone('fooValue');   // WHERE user_phone = 'fooValue'
-     * $query->filterByUserPhone('%fooValue%'); // WHERE user_phone LIKE '%fooValue%'
+     * $query->filterByphone('fooValue');   // WHERE user_phone = 'fooValue'
+     * $query->filterByphone('%fooValue%'); // WHERE user_phone LIKE '%fooValue%'
      * </code>
      *
-     * @param     string $userPhone The value to use as filter.
+     * @param     string $phone The value to use as filter.
      *              Accepts wildcards (* and % trigger a LIKE)
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
      * @return $this|ChildUserQuery The current query, for fluid interface
      */
-    public function filterByUserPhone($userPhone = null, $comparison = null)
+    public function filterByphone($phone = null, $comparison = null)
     {
         if (null === $comparison) {
-            if (is_array($userPhone)) {
+            if (is_array($phone)) {
                 $comparison = Criteria::IN;
-            } elseif (preg_match('/[\%\*]/', $userPhone)) {
-                $userPhone = str_replace('*', '%', $userPhone);
+            } elseif (preg_match('/[\%\*]/', $phone)) {
+                $phone = str_replace('*', '%', $phone);
                 $comparison = Criteria::LIKE;
             }
         }
 
-        return $this->addUsingAlias(UserTableMap::COL_USER_PHONE, $userPhone, $comparison);
+        return $this->addUsingAlias(UserTableMap::COL_USER_PHONE, $phone, $comparison);
     }
 
     /**
@@ -456,12 +456,12 @@ abstract class UserQuery extends ModelCriteria
      *
      * Example usage:
      * <code>
-     * $query->filterByUserRegistered('2011-03-14'); // WHERE user_registered = '2011-03-14'
-     * $query->filterByUserRegistered('now'); // WHERE user_registered = '2011-03-14'
-     * $query->filterByUserRegistered(array('max' => 'yesterday')); // WHERE user_registered > '2011-03-13'
+     * $query->filterByregistered('2011-03-14'); // WHERE user_registered = '2011-03-14'
+     * $query->filterByregistered('now'); // WHERE user_registered = '2011-03-14'
+     * $query->filterByregistered(array('max' => 'yesterday')); // WHERE user_registered > '2011-03-13'
      * </code>
      *
-     * @param     mixed $userRegistered The value to use as filter.
+     * @param     mixed $registered The value to use as filter.
      *              Values can be integers (unix timestamps), DateTime objects, or strings.
      *              Empty strings are treated as NULL.
      *              Use scalar values for equality.
@@ -471,16 +471,16 @@ abstract class UserQuery extends ModelCriteria
      *
      * @return $this|ChildUserQuery The current query, for fluid interface
      */
-    public function filterByUserRegistered($userRegistered = null, $comparison = null)
+    public function filterByregistered($registered = null, $comparison = null)
     {
-        if (is_array($userRegistered)) {
+        if (is_array($registered)) {
             $useMinMax = false;
-            if (isset($userRegistered['min'])) {
-                $this->addUsingAlias(UserTableMap::COL_USER_REGISTERED, $userRegistered['min'], Criteria::GREATER_EQUAL);
+            if (isset($registered['min'])) {
+                $this->addUsingAlias(UserTableMap::COL_USER_REGISTERED, $registered['min'], Criteria::GREATER_EQUAL);
                 $useMinMax = true;
             }
-            if (isset($userRegistered['max'])) {
-                $this->addUsingAlias(UserTableMap::COL_USER_REGISTERED, $userRegistered['max'], Criteria::LESS_EQUAL);
+            if (isset($registered['max'])) {
+                $this->addUsingAlias(UserTableMap::COL_USER_REGISTERED, $registered['max'], Criteria::LESS_EQUAL);
                 $useMinMax = true;
             }
             if ($useMinMax) {
@@ -491,7 +491,7 @@ abstract class UserQuery extends ModelCriteria
             }
         }
 
-        return $this->addUsingAlias(UserTableMap::COL_USER_REGISTERED, $userRegistered, $comparison);
+        return $this->addUsingAlias(UserTableMap::COL_USER_REGISTERED, $registered, $comparison);
     }
 
     /**
@@ -499,12 +499,12 @@ abstract class UserQuery extends ModelCriteria
      *
      * Example usage:
      * <code>
-     * $query->filterByUserUpdated('2011-03-14'); // WHERE user_updated = '2011-03-14'
-     * $query->filterByUserUpdated('now'); // WHERE user_updated = '2011-03-14'
-     * $query->filterByUserUpdated(array('max' => 'yesterday')); // WHERE user_updated > '2011-03-13'
+     * $query->filterByupdated('2011-03-14'); // WHERE user_updated = '2011-03-14'
+     * $query->filterByupdated('now'); // WHERE user_updated = '2011-03-14'
+     * $query->filterByupdated(array('max' => 'yesterday')); // WHERE user_updated > '2011-03-13'
      * </code>
      *
-     * @param     mixed $userUpdated The value to use as filter.
+     * @param     mixed $updated The value to use as filter.
      *              Values can be integers (unix timestamps), DateTime objects, or strings.
      *              Empty strings are treated as NULL.
      *              Use scalar values for equality.
@@ -514,16 +514,16 @@ abstract class UserQuery extends ModelCriteria
      *
      * @return $this|ChildUserQuery The current query, for fluid interface
      */
-    public function filterByUserUpdated($userUpdated = null, $comparison = null)
+    public function filterByupdated($updated = null, $comparison = null)
     {
-        if (is_array($userUpdated)) {
+        if (is_array($updated)) {
             $useMinMax = false;
-            if (isset($userUpdated['min'])) {
-                $this->addUsingAlias(UserTableMap::COL_USER_UPDATED, $userUpdated['min'], Criteria::GREATER_EQUAL);
+            if (isset($updated['min'])) {
+                $this->addUsingAlias(UserTableMap::COL_USER_UPDATED, $updated['min'], Criteria::GREATER_EQUAL);
                 $useMinMax = true;
             }
-            if (isset($userUpdated['max'])) {
-                $this->addUsingAlias(UserTableMap::COL_USER_UPDATED, $userUpdated['max'], Criteria::LESS_EQUAL);
+            if (isset($updated['max'])) {
+                $this->addUsingAlias(UserTableMap::COL_USER_UPDATED, $updated['max'], Criteria::LESS_EQUAL);
                 $useMinMax = true;
             }
             if ($useMinMax) {
@@ -534,7 +534,7 @@ abstract class UserQuery extends ModelCriteria
             }
         }
 
-        return $this->addUsingAlias(UserTableMap::COL_USER_UPDATED, $userUpdated, $comparison);
+        return $this->addUsingAlias(UserTableMap::COL_USER_UPDATED, $updated, $comparison);
     }
 
     /**
@@ -542,12 +542,12 @@ abstract class UserQuery extends ModelCriteria
      *
      * Example usage:
      * <code>
-     * $query->filterByUserState(1234); // WHERE user_state = 1234
-     * $query->filterByUserState(array(12, 34)); // WHERE user_state IN (12, 34)
-     * $query->filterByUserState(array('min' => 12)); // WHERE user_state > 12
+     * $query->filterBystate(1234); // WHERE user_state = 1234
+     * $query->filterBystate(array(12, 34)); // WHERE user_state IN (12, 34)
+     * $query->filterBystate(array('min' => 12)); // WHERE user_state > 12
      * </code>
      *
-     * @param     mixed $userState The value to use as filter.
+     * @param     mixed $state The value to use as filter.
      *              Use scalar values for equality.
      *              Use array values for in_array() equivalent.
      *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
@@ -555,16 +555,16 @@ abstract class UserQuery extends ModelCriteria
      *
      * @return $this|ChildUserQuery The current query, for fluid interface
      */
-    public function filterByUserState($userState = null, $comparison = null)
+    public function filterBystate($state = null, $comparison = null)
     {
-        if (is_array($userState)) {
+        if (is_array($state)) {
             $useMinMax = false;
-            if (isset($userState['min'])) {
-                $this->addUsingAlias(UserTableMap::COL_USER_STATE, $userState['min'], Criteria::GREATER_EQUAL);
+            if (isset($state['min'])) {
+                $this->addUsingAlias(UserTableMap::COL_USER_STATE, $state['min'], Criteria::GREATER_EQUAL);
                 $useMinMax = true;
             }
-            if (isset($userState['max'])) {
-                $this->addUsingAlias(UserTableMap::COL_USER_STATE, $userState['max'], Criteria::LESS_EQUAL);
+            if (isset($state['max'])) {
+                $this->addUsingAlias(UserTableMap::COL_USER_STATE, $state['max'], Criteria::LESS_EQUAL);
                 $useMinMax = true;
             }
             if ($useMinMax) {
@@ -575,7 +575,7 @@ abstract class UserQuery extends ModelCriteria
             }
         }
 
-        return $this->addUsingAlias(UserTableMap::COL_USER_STATE, $userState, $comparison);
+        return $this->addUsingAlias(UserTableMap::COL_USER_STATE, $state, $comparison);
     }
 
     /**
@@ -588,7 +588,7 @@ abstract class UserQuery extends ModelCriteria
     public function prune($user = null)
     {
         if ($user) {
-            $this->addUsingAlias(UserTableMap::COL_USER_ID, $user->getUserId(), Criteria::NOT_EQUAL);
+            $this->addUsingAlias(UserTableMap::COL_USER_ID, $user->getid(), Criteria::NOT_EQUAL);
         }
 
         return $this;

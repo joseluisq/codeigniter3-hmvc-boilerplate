@@ -16,7 +16,7 @@ class RESTful {
   protected $response;
   private $_supported_formats = array(
     'json' => 'application/json',
-    'xml' => 'text/xml'
+    'xml' => 'application/xml'
   );
 
   function __construct($params) {
@@ -26,29 +26,7 @@ class RESTful {
     $this->request = $params['request'];
     $this->response = $params['response'];
 
-    $this->process_api_request();
     $this->process_restful_request();
-  }
-
-  /**
-   * Process incoming API request
-   */
-  private function process_api_request() {
-    if ($this->validate_api_class()) {
-      if (!defined('RESTFUL_API_KEY')) {
-        $this->response->forbidden();
-        $this->response->output(array(
-          'message' => 'API key is not exists.'
-        ));
-      }
-
-      if (!$this->is_valid_api_key()) {
-        $this->response->forbidden();
-        $this->response->output(array(
-          'message' => 'API key is not valid.'
-        ));
-      }
-    }
   }
 
   /**
@@ -71,10 +49,33 @@ class RESTful {
 
       $this->response->set_default_format($format);
 
+      $this->process_api_request();
+
       if ($this->request->method() !== $method) {
         $this->response->method_not_allowed();
         $this->response->output(array(
           'message' => 'Method not allowed.'
+        ));
+      }
+    }
+  }
+
+  /**
+   * Process incoming API request
+   */
+  private function process_api_request() {
+    if ($this->validate_api_class()) {
+      if (!defined('RESTFUL_API_KEY')) {
+        $this->response->unauthorized();
+        $this->response->output(array(
+          'message' => 'API key is not exists.'
+        ));
+      }
+
+      if (!$this->is_valid_api_key()) {
+        $this->response->unauthorized();
+        $this->response->output(array(
+          'message' => 'API key is not valid.'
         ));
       }
     }
@@ -146,7 +147,7 @@ class RESTful {
    * @return string | NULL
    */
   private function get_content_type_format() {
-    $content_type = $this->input->server('CONTENT_TYPE');
+    $content_type = $this->input->server('HTTP_ACCEPT');
 
     foreach ($this->_supported_formats as $key => $value) {
       if (strpos($content_type, ';') !== FALSE) {

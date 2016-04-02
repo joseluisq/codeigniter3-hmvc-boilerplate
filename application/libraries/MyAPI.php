@@ -13,7 +13,7 @@ class MyAPI {
   private static $_instance = NULL;
   private static $_supported_formats = array(
     'json' => 'application/json',
-    'xml' => 'text/xml'
+    'xml' => 'application/xml'
   );
   private static $_options = array(
     'base_url' => '',
@@ -52,7 +52,7 @@ class MyAPI {
     $headers = array();
 
     foreach ($header as $key => $value) {
-      $headers[$key] = "$key: $value";
+      $headers[] = "$key: $value";
     }
 
     $opts['header'] = $headers;
@@ -86,14 +86,17 @@ class MyAPI {
     $opts = self::$_CURL_OPTS;
     $header = self::$_options['header'];
     $base_url = self::$_options['base_url'];
-
+    $data_type = self::$_options['data_type'];
+    $accept_types = self::$_supported_formats;
     $url = $base_url . $url;
+
+    $header[] = 'Accept: ' . $accept_types[$data_type];
 
     $opts[CURLOPT_HTTPHEADER] = $header;
     $opts[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
 
     if ($method === 'GET') {
-      $url = $url . (empty($params) ? '' : '?' . (http_build_query($params)));
+      $url .= (empty($params) ? '' : '?' . http_build_query($params));
     } else {
       $opts[CURLOPT_POSTFIELDS] = $params;
     }
