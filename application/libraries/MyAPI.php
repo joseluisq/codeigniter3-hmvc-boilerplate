@@ -138,6 +138,14 @@ class MyAPI {
 
     curl_close($ch);
 
+    if ($data_type === 'json') {
+      $result = json_decode($result, TRUE);
+    }
+
+    if ($data_type === 'xml') {
+      $result = json_decode(json_encode(simplexml_load_string($result)), TRUE);
+    }
+
     return $result;
   }
 
