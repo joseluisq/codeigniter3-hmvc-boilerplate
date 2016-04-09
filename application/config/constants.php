@@ -86,7 +86,7 @@ define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 // Useful path definitions
-define('PATH_BASE', dirname(BASEPATH));
+define('PATH_BASE', FCPATH);
 define('PATH_APPLICATION', PATH_BASE . '/application');
 define('APP_CACHE', PATH_APPLICATION . '/cache');
 define('APP_LIBRARIES', PATH_APPLICATION . '/libraries');
