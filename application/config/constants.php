@@ -85,6 +85,17 @@ define('EXIT_DATABASE', 8); // database error
 define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
+// Useful path definitions
+define('PATH_BASE', dirname(BASEPATH));
+define('PATH_APPLICATION', PATH_BASE . '/application');
+define('APP_CACHE', PATH_APPLICATION . '/cache');
+define('APP_LIBRARIES', PATH_APPLICATION . '/libraries');
+define('APP_MODELS', APPPATH . '/models');
+define('APP_CONTROLLERS', APPPATH . '/controllers');
+define('APP_VIEWS', APPPATH . '/views');
+
+define('DS', DIRECTORY_SEPARATOR);
+
 /*
   |--------------------------------------------------------------------------
   | RESTful definitions
