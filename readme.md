@@ -1,12 +1,13 @@
 # Codeigniter 3 HMVC Boilerplate
 
-> Boilerplate for creating Codeigniter 3 [HMVC](https://bitbucket.org/wiredesignz/codeigniter-modular-extensions-hmvc) and [Propel 2 ORM](http://propelorm.org/)
+> Boilerplate for creating Codeigniter 3 [HMVC](https://bitbucket.org/wiredesignz/codeigniter-modular-extensions-hmvc) with [Propel 2 ORM](http://propelorm.org/) and [OAuth2](https://github.com/bshaffer/oauth2-server-php).
 
 ## Features
 - CodeIgniter 3 with HMVC Modular Extension
 - Composer project
-- RESTful compatible methods: GET, POST, PUT and DELETE.
-- Propel 2 ORM
+- HTTP verbs: `GET`, `POST`, `PUT` and `DELETE`.
+- [Propel 2 ORM](http://propelorm.org/) (optional)
+- [OAuth2](https://github.com/bshaffer/oauth2-server-php) (optional)
 
 ## Install
 
@@ -16,6 +17,12 @@ Clone this repository and install composer dependencies.
 $ git clone https://github.com/joseluisq/codeigniter3-hmvc-boilerplate.git
 $ cd codeigniter3-hmvc-boilerplate
 $ composer install
+```
+
+Run development server.
+
+```sh
+$ php -S localhost:8001 -t path_project_directory
 ```
 
 ## Propel 2
@@ -52,7 +59,54 @@ Build SQL files
 $ ./propel sql:build
 ```
 
-Note: See `application/config.php` file for change default timezone.
+## OAuth2
+
+**Client Credentials**
+
+`POST http://localhost:8001/v1/login/oauth`
+
+Header params:
+
+- `API-KEY` : (View `application/constants.php` file for change `API_KEY`)
+- `Authorization` : `client_id` and `client_sercret` 
+
+Example:
+
+```sh
+curl \
+    -H "API-KEY:32563b81ec7288ef87bbe39c3b7001a7bff35395eec1eac906a580e6a12d189e" \
+    -u admin:123456 \
+    -X POST http://localhost:8001/v1/login/oauth
+```
+
+Output:
+`{"access_token":"8ea0d5aedc6c7da8f3b6603b8ba783c85c7f0ef7","expires_in":3600,"token_type":"Bearer","scope":null}`
+
+## API (example)
+
+`User` API requires `access_token`.
+
+**Get all Users:** `GET "http://localhost:8001/v1/user?access_token=..."`
+
+Example: 
+
+```sh
+curl \
+    -H "API-KEY:32563b81ec7288ef87bbe39c3b7001a7bff35395eec1eac906a580e6a12d189e" \
+    -X GET "http://localhost:8001/v1/user?access_token=6b3a73aaa27f3a8495d7588fee56ab15628e64d7"
+```
+
+**Get specific User by Id:** `GET "http://localhost:8001/v1/user/[:Id]?access_token=..."`
+
+Example: 
+
+```sh
+curl \
+    -H "API-KEY:32563b81ec7288ef87bbe39c3b7001a7bff35395eec1eac906a580e6a12d189e" \
+    -X GET "http://localhost:8001/v1/user/2?access_token=6b3a73aaa27f3a8495d7588fee56ab15628e64d7"
+```
+
+**Note:** Check out `application/config.php` for change default timezone.
 
 ## License
 MIT license

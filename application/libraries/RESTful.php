@@ -6,6 +6,7 @@
  * 
  * @property Request $request Request
  * @property Response $response Response
+ * @property MyOAuth2 $oauth MyOAuth2
  * 
  * @version   1.0.0
  * @author    José Luis Quintana <http://git.io/joseluisq>
@@ -14,6 +15,7 @@ class RESTful {
 
   protected $request;
   protected $response;
+  protected $oauth;
   private $_supported_formats = array(
     'json' => 'application/json',
     'xml' => 'application/xml'
@@ -78,6 +80,8 @@ class RESTful {
           'message' => 'API key is not valid.'
         ));
       }
+
+      $this->oauth_api_processing();
     }
   }
 
@@ -160,6 +164,30 @@ class RESTful {
     }
 
     return NULL;
+  }
+
+  /**
+   * OAuth2 API processing request
+   */
+  private function oauth_api_processing() {
+    require APP_LIBRARIES . DS . 'MyOAuth2.php';
+
+    $this->oauth = new MyOAuth2();
+
+    $class_name = $this->router->fetch_class();
+    $method_name = $this->router->fetch_method();
+
+    if (!$class_name === 'OAuth2_api_controller' && !$method_name === 'client_credential_post') {
+      $this->oauth->authentication_resource();
+    }
+  }
+
+  /**
+   * Return MyOAuth2 instance
+   * @return MyOAuth2
+   */
+  function OAuth2() {
+    return $this->oauth;
   }
 
 }

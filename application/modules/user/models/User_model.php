@@ -28,7 +28,14 @@ class User_model {
    */
   function find_one_by_id($id) {
     try {
-      return UserQuery::create()->findPk($id)->toArray();
+      $data = array();
+      $user = UserQuery::create()->findPk($id);
+
+      if ($user) {
+        $data = $user->toArray();
+      }
+
+      return $data;
     } catch (PropelException $e) {
       return;
     }

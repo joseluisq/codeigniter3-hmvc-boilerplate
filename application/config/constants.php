@@ -84,7 +84,6 @@ define('EXIT_USER_INPUT', 7); // invalid user input
 define('EXIT_DATABASE', 8); // database error
 define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
-
 // Useful path definitions
 define('PATH_BASE', FCPATH);
 define('PATH_APPLICATION', PATH_BASE . '/application');
@@ -93,6 +92,7 @@ define('APP_LIBRARIES', PATH_APPLICATION . '/libraries');
 define('APP_MODELS', APPPATH . '/models');
 define('APP_CONTROLLERS', APPPATH . '/controllers');
 define('APP_VIEWS', APPPATH . '/views');
+define('APP_VENDOR', PATH_BASE . '/vendor');
 
 define('DS', DIRECTORY_SEPARATOR);
 
@@ -102,4 +102,4 @@ define('DS', DIRECTORY_SEPARATOR);
   |--------------------------------------------------------------------------
   |
  */
-define('RESTFUL_API_KEY', '7ded2bfab2c85907b0e788412bebc6b224c46c7c');
+define('RESTFUL_API_KEY', '32563b81ec7288ef87bbe39c3b7001a7bff35395eec1eac906a580e6a12d189e');

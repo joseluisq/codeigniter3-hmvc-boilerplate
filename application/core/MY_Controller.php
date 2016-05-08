@@ -6,6 +6,8 @@
  * @property  Middleware $middleware Middleware
  * @property  Request $request Request
  * @property  Response $response Response
+ * @property  RESTful $restful RESTful
+ * @property  MyOAuth2 $oauth MyOAuth2
  * 
  * @version   1.0.0
  * @author    José Luis Quintana <http://git.io/joseluisq>
@@ -14,6 +16,8 @@ class MY_Controller extends CI_Controller {
 
   public $request;
   public $response;
+  public $restful;
+  public $oauth;
 
   public function __construct() {
     parent::__construct();
@@ -42,7 +46,9 @@ class MY_Controller extends CI_Controller {
       'request' => $request,
       'response' => $response,
       'router' => $this->router
-    ));
+      ), 'restful');
+
+    $this->oauth = $this->restful->OAuth2();
   }
 
 }

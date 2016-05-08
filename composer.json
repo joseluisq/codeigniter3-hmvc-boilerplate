@@ -3,7 +3,8 @@
   "require": {
     "php": ">=5.5",
     "codeigniter/framework": "3.0.*",
-    "propel/propel": "~2.0@dev"
+    "propel/propel": "~2.0@dev",
+    "bshaffer/oauth2-server-php": "^1.8"
   },
   "autoload": {
     "classmap": ["orm/classes"]
