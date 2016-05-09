@@ -49,11 +49,9 @@ class MyOAuth2 {
 
   /**
    * Authentication for resources
+   * http://bshaffer.github.io/oauth2-server-php-docs/controllers/resource/
    */
   function authentication_resource() {
-//    $this->request->request['grant_type'] = 'client_credentials';
-//    print_r($this->request);die;
-
     if (!$this->server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
       $response = $this->server->getResponse();
       $response->setParameters(array(
@@ -71,7 +69,6 @@ class MyOAuth2 {
    */
   public function client_credentials() {
     $this->request->request['grant_type'] = 'client_credentials';
-
     $this->server->addGrantType(new ClientCredentials($this->storage, array(
       'allow_credentials_in_request_body' => FALSE
     )));
@@ -105,7 +102,7 @@ class MyOAuth2 {
   }
 
   /**
-   * limit scpoe here
+   * Limit scpoe here
    * @param $scope = "node file userinfo"
    */
   public function require_scope($scope = '') {
