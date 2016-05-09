@@ -61,49 +61,62 @@ $ ./propel sql:build
 
 ## OAuth2
 
-**Client Credentials**
+#### Client Credentials
 
-`POST http://localhost:8001/v1/login/oauth`
+```
+POST http://localhost:8001/v1/login/oauth
+```
 
 Header params:
 
 - `API-KEY` : (View `application/constants.php` file for change `API_KEY`)
-- `Authorization` : `client_id` and `client_sercret` 
+- `Authorization` : `client_id` and `client_secret`
 
 Example:
 
 ```sh
-curl \
-    -H "API-KEY:32563b81ec7288ef87bbe39c3b7001a7bff35395eec1eac906a580e6a12d189e" \
-    -u admin:123456 \
-    -X POST http://localhost:8001/v1/login/oauth
+$ curl \
+      -H "API-KEY:32563b81ec7288ef87bbe39c3b7001a7bff35395eec1eac906a580e6a12d189e" \
+      -u admin:123456 \
+      -X POST http://localhost:8001/v1/login/oauth
 ```
 
 Output:
-`{"access_token":"8ea0d5aedc6c7da8f3b6603b8ba783c85c7f0ef7","expires_in":3600,"token_type":"Bearer","scope":null}`
+
+ ```json
+{"access_token":"8ea0d5aedc6c7da8f3b6603b8ba783c85c7f0ef7","expires_in":3600,"token_type":"Bearer","scope":null}
+ ```
 
 ## API (example)
 
 `User` API requires `access_token`.
 
-**Get all Users:** `GET "http://localhost:8001/v1/user?access_token=..."`
+#### Get all Users
 
-Example: 
-
-```sh
-curl \
-    -H "API-KEY:32563b81ec7288ef87bbe39c3b7001a7bff35395eec1eac906a580e6a12d189e" \
-    -X GET "http://localhost:8001/v1/user?access_token=6b3a73aaa27f3a8495d7588fee56ab15628e64d7"
+```
+GET "http://localhost:8001/v1/user?access_token=..."
 ```
 
-**Get specific User by Id:** `GET "http://localhost:8001/v1/user/[:Id]?access_token=..."`
+Example: 
+
+```sh
+$ curl \
+      -H "API-KEY:32563b81ec7288ef87bbe39c3b7001a7bff35395eec1eac906a580e6a12d189e" \
+      -X GET "http://localhost:8001/v1/user?access_token=6b3a73aaa27f3a8495d7588fee56ab15628e64d7"
+```
+
+#### Get specific User by Id
+
+```
+GET "http://localhost:8001/v1/user/[:Id]?access_token=..."
+```
 
 Example: 
 
 ```sh
-curl \
-    -H "API-KEY:32563b81ec7288ef87bbe39c3b7001a7bff35395eec1eac906a580e6a12d189e" \
-    -X GET "http://localhost:8001/v1/user/2?access_token=6b3a73aaa27f3a8495d7588fee56ab15628e64d7"
+$ curl \
+      -H "API-KEY:32563b81ec7288ef87bbe39c3b7001a7bff35395eec1eac906a580e6a12d189e" \
+      -X GET "http://localhost:8001/v1/user/2?access_token=6b3a73aaa27f3a8495d7588fee56ab15628e64d7"
 ```
 
 **Note:** Check out `application/config.php` for change default timezone.
