@@ -48,7 +48,7 @@ class MY_Controller extends CI_Controller {
       'router' => $this->router
       ), 'restful');
 
-    $this->oauth = $this->restful->OAuth2();
+    $this->oauth = $this->restful->get_oauth();
   }
 
 }

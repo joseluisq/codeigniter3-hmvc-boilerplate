@@ -172,12 +172,16 @@ class RESTful {
   private function oauth_api_processing() {
     require APP_LIBRARIES . DS . 'MyOAuth2.php';
 
-    $this->oauth = new MyOAuth2();
+    $config = $this->load->config('oauth2', TRUE);
+    $config_storage = $config['storage'];
+    $config_ignore = $config['ignore'];
+
+    $this->oauth = new MyOAuth2($config_storage);
 
     $class_name = $this->router->fetch_class();
     $method_name = $this->router->fetch_method();
 
-    if (!$class_name === 'OAuth2_api_controller' && !$method_name === 'client_credential_post') {
+    if (empty($config_ignore) || !in_array("$class_name/$method_name", $config_ignore)) {
       $this->oauth->authentication_resource();
     }
   }
@@ -186,7 +190,7 @@ class RESTful {
    * Return MyOAuth2 instance
    * @return MyOAuth2
    */
-  function OAuth2() {
+  function get_oauth() {
     return $this->oauth;
   }
 

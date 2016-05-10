@@ -102,4 +102,4 @@ define('DS', DIRECTORY_SEPARATOR);
   |--------------------------------------------------------------------------
   |
  */
-define('RESTFUL_API_KEY', '32563b81ec7288ef87bbe39c3b7001a7bff35395eec1eac906a580e6a12d189e');
+define('RESTFUL_API_KEY', '156f5565afcaaf5f472311c6135fff675a7f70d89a822d21991d7a2f4acd6f2d');

@@ -1,13 +1,5 @@
 <?php
 
-use OAuth2\Server;
-use OAuth2\Storage\Pdo;
-use OAuth2\Storage\Memory;
-use OAuth2\GrantType\ClientCredentials;
-use OAuth2\GrantType\AuthorizationCode;
-use OAuth2\GrantType\UserCredentials;
-use OAuth2\GrantType\RefreshToken;
-
 /**
  * Extended class for OAuth2
  * Inpirated on https://github.com/grasses/codeigniter-oauth2-server
@@ -21,20 +13,22 @@ class MyOAuth2 {
    * Create authentication server
    * @param array $config
    */
-  function __construct() {
-    require_once APP_VENDOR . DS . 'bshaffer/oauth2-server-php/src/OAuth2/Autoloader.php';
-    require_once APPPATH . DS . 'config/database.php';
+  function __construct($config) {
+    if (!class_exists('OAuth2\Autoloader')) {
+      require_once APP_VENDOR . DS . 'bshaffer/oauth2-server-php/src/OAuth2/Autoloader.php';
+      OAuth2\Autoloader::register();
+    }
 
-    OAuth2\Autoloader::register();
+    if (empty($config)) {
+      die('OAuth2 Storage settings is not defined');
+    }
 
-    $config = $db['oauth'];
-
-    $this->storage = new Pdo(array(
+    $this->storage = new OAuth2\Storage\Pdo(array(
       'dsn' => $config['dsn'],
       'username' => $config['username'],
       'password' => $config['password']
     ));
-    $this->server = new Server($this->storage, array('allow_implicit' => TRUE));
+    $this->server = new OAuth2\Server($this->storage, array('allow_implicit' => TRUE));
     $this->request = OAuth2\Request::createFromGlobals();
     $this->response = new OAuth2\Response();
   }
@@ -69,7 +63,7 @@ class MyOAuth2 {
    */
   public function client_credentials() {
     $this->request->request['grant_type'] = 'client_credentials';
-    $this->server->addGrantType(new ClientCredentials($this->storage, array(
+    $this->server->addGrantType(new OAuth2\GrantType\ClientCredentials($this->storage, array(
       'allow_credentials_in_request_body' => FALSE
     )));
     $this->server->handleTokenRequest($this->request)->send();
@@ -82,8 +76,8 @@ class MyOAuth2 {
    */
   public function password_credentials() {
     $users = array('user' => array('password' => '1234', 'first_name' => 'John', 'last_name' => 'Doe'));
-    $storage = new Memory(array('user_credentials' => $users));
-    $this->server->addGrantType(new UserCredentials($storage));
+    $storage = new OAuth2\Storage\Memory(array('user_credentials' => $users));
+    $this->server->addGrantType(new OAuth2\GrantType\UserCredentials($storage));
     $this->server->handleTokenRequest($this->request)->send();
   }
 
@@ -93,7 +87,7 @@ class MyOAuth2 {
    * http://bshaffer.github.io/oauth2-server-php-docs/grant-types/refresh-token/
    */
   public function refresh_token() {
-    $this->server->addGrantType(new RefreshToken($this->storage, array(
+    $this->server->addGrantType(new \OAuth2\GrantType\RefreshToken($this->storage, array(
       'always_issue_new_refresh_token' => TRUE,
       'unset_refresh_token_after_use' => TRUE,
       'refresh_token_lifetime' => 2419200,
@@ -120,7 +114,7 @@ class MyOAuth2 {
   }
 
   public function authorize($is_authorized) {
-    $this->server->addGrantType(new AuthorizationCode($this->storage));
+    $this->server->addGrantType(new OAuth2\GrantType\AuthorizationCode($this->storage));
     $this->server->handleAuthorizeRequest($this->request, $this->response, $is_authorized);
     if ($is_authorized) {
       $code = substr($this->response->getHttpHeader('Location'), strpos($this->response->getHttpHeader('Location'), 'code=') + 5, 40);
@@ -130,7 +124,7 @@ class MyOAuth2 {
   }
 
   public function authorization_code() {
-    $this->server->addGrantType(new AuthorizationCode($this->storage));
+    $this->server->addGrantType(new OAuth2\GrantType\AuthorizationCode($this->storage));
     $this->server->handleTokenRequest($this->request)->send();
   }
 
