@@ -39,7 +39,7 @@ class Response {
     echo $this->to_xml($data);
   }
 
-  function to_xml($data, $basenode = 'xml', $xml = null) {
+  function to_xml($data, $basenode = 'response', $xml = null) {
     // turn off compatibility mode as simple xml throws a wobbly if you don't.
     if (ini_get('zend.ze1_compatibility_mode') == 1) {
       ini_set('zend.ze1_compatibility_mode', 0);
@@ -76,10 +76,10 @@ class Response {
   }
 
   /**
-   * Output data by format
+   * Send data by default format
    * @param array $data
    */
-  function output($data) {
+  function send($data) {
     $this->{$this->_default_format}($data);
     exit;
   }
@@ -91,6 +91,14 @@ class Response {
    */
   function set_default_format($format) {
     $this->_default_format = $format;
+  }
+
+  /**
+   * Get the default output format
+   * @param string $format
+   */
+  function get_default_format() {
+    return $this->_default_format;
   }
 
   function forbidden() {

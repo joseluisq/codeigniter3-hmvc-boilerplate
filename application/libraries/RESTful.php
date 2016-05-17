@@ -3,11 +3,11 @@
 /**
  * RESTfull
  * Lite class for RESTful interactions
- * 
+ *
  * @property Request $request Request
  * @property Response $response Response
  * @property MyOAuth2 $oauth MyOAuth2
- * 
+ *
  * @version   1.0.0
  * @author    José Luis Quintana <http://git.io/joseluisq>
  */
@@ -39,14 +39,15 @@ class RESTful {
 
     if ($method) {
       $format = $this->get_content_type_format();
+      $uri_format = NULL;
 
       if (!$format) {
         $format = 'json';
         $uri_format = $this->get_content_type_query_format();
+      }
 
-        if ($uri_format) {
-          $format = $uri_format;
-        }
+      if ($uri_format) {
+        $format = $uri_format;
       }
 
       $this->response->set_default_format($format);
@@ -55,7 +56,7 @@ class RESTful {
 
       if ($this->request->method() !== $method) {
         $this->response->method_not_allowed();
-        $this->response->output(array(
+        $this->response->send(array(
           'message' => 'Method not allowed.'
         ));
       }
@@ -69,14 +70,14 @@ class RESTful {
     if ($this->validate_api_class()) {
       if (!defined('RESTFUL_API_KEY')) {
         $this->response->unauthorized();
-        $this->response->output(array(
+        $this->response->send(array(
           'message' => 'API key is not exists.'
         ));
       }
 
       if (!$this->is_valid_api_key()) {
         $this->response->unauthorized();
-        $this->response->output(array(
+        $this->response->send(array(
           'message' => 'API key is not valid.'
         ));
       }
@@ -182,7 +183,8 @@ class RESTful {
     $method_name = $this->router->fetch_method();
 
     if (empty($config_ignore) || !in_array("$class_name/$method_name", $config_ignore)) {
-      $this->oauth->authentication_resource();
+      $format = $this->response->get_default_format();
+      $this->oauth->authentication_resource($format);
     }
   }
 

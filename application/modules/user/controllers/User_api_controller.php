@@ -22,7 +22,7 @@ class User_api_controller extends MY_Controller {
    */
   function one_get($id) {
     $user = $this->User_model->find_one_by_id($id);
-    $this->response->output($user);
+    $this->response->send($user);
   }
 
   /**
@@ -31,7 +31,7 @@ class User_api_controller extends MY_Controller {
    */
   function all_get() {
     $users = $this->User_model->find_all();
-    $this->response->output($users);
+    $this->response->send($users);
   }
 
 }

@@ -3,7 +3,7 @@
 /**
  * Extended class for OAuth2
  * Inpirated on https://github.com/grasses/codeigniter-oauth2-server
- * 
+ *
  * @version   1.0.0
  * @author    José Luis Quintana <http://git.io/joseluisq>
  */
@@ -44,20 +44,22 @@ class MyOAuth2 {
   /**
    * Authentication for resources
    * http://bshaffer.github.io/oauth2-server-php-docs/controllers/resource/
+   *
+   * @param string $format Data format
    */
-  function authentication_resource() {
+  function authentication_resource($format) {
     if (!$this->server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
       $response = $this->server->getResponse();
       $response->setParameters(array(
         'message' => 'Requires authentication'
       ));
-      $response->send();
+      $response->send($format);
       exit;
     }
   }
 
   /**
-   * The client uses their credentials to retrieve an access token directly, 
+   * The client uses their credentials to retrieve an access token directly,
    * which allows access to resources under the client’s control.
    * http://bshaffer.github.io/oauth2-server-php-docs/grant-types/client-credentials/
    */
@@ -70,7 +72,7 @@ class MyOAuth2 {
   }
 
   /**
-   * A Resource Owner’s username and password are submitted as part of 
+   * A Resource Owner’s username and password are submitted as part of
    * the request, and a token is issued upon successful authentication.
    * http://bshaffer.github.io/oauth2-server-php-docs/grant-types/user-credentials/
    */
@@ -82,7 +84,7 @@ class MyOAuth2 {
   }
 
   /**
-   * The client can submit a refresh token and recieve 
+   * The client can submit a refresh token and recieve
    * a new access token if the access token had expired.
    * http://bshaffer.github.io/oauth2-server-php-docs/grant-types/refresh-token/
    */
