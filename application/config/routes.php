@@ -61,7 +61,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 // OAuth 2 Module
 // -- Client Credentials
-$route['v1/login/oauth'] = 'oauth2/login';
+$route['v1/login/oauth/access_token'] = 'oauth2/login/access_token';
 
 // User Module
 $route['v1/user'] = 'user';

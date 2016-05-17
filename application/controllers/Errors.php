@@ -20,7 +20,7 @@ class Errors extends MY_Controller {
    * @see http://codeigniter.com/user_guide/general/urls.html
    */
   function index() {
-    $this->response->output(array(
+    $this->response->send(array(
       'message' => 'Request not found.'
     ));
   }

@@ -63,12 +63,12 @@ class MyOAuth2 {
    * which allows access to resources under the client’s control.
    * http://bshaffer.github.io/oauth2-server-php-docs/grant-types/client-credentials/
    */
-  public function client_credentials() {
+  public function client_credentials($format) {
     $this->request->request['grant_type'] = 'client_credentials';
     $this->server->addGrantType(new OAuth2\GrantType\ClientCredentials($this->storage, array(
       'allow_credentials_in_request_body' => FALSE
     )));
-    $this->server->handleTokenRequest($this->request)->send();
+    $this->server->handleTokenRequest($this->request)->send($format);
   }
 
   /**

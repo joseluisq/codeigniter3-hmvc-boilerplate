@@ -64,7 +64,7 @@ $ ./propel sql:build
 #### Client Credentials
 
 ```
-POST http://localhost:8001/v1/login/oauth
+POST http://localhost:8001/v1/login/oauth/access_token
 ```
 
 Header params:
@@ -77,8 +77,8 @@ Example:
 ```sh
 $ curl \
       -H "API-KEY:32563b81ec7288ef87bbe39c3b7001a7bff35395eec1eac906a580e6a12d189e" \
-      -u admin:123456 \
-      -X POST http://localhost:8001/v1/login/oauth
+      -u admin \
+      -X POST http://localhost:8001/v1/login/oauth/access_token
 ```
 
 Output:
@@ -86,6 +86,9 @@ Output:
  ```json
 {"access_token":"8ea0d5aedc6c7da8f3b6603b8ba783c85c7f0ef7","expires_in":3600,"token_type":"Bearer","scope":null}
  ```
+
+Use `Accept` header for choose the format of the data that you wish to receive.
+For example: `application/json` (default) and `application/xml`
 
 ## API (example)
 
@@ -99,10 +102,21 @@ GET "http://localhost:8001/v1/user?access_token=..."
 
 Example: 
 
+`access_token` via query string:
+
 ```sh
 $ curl \
-      -H "API-KEY:32563b81ec7288ef87bbe39c3b7001a7bff35395eec1eac906a580e6a12d189e" \
+      -H "API-KEY: 32563b81ec7288ef87bbe39c3b7001a7bff35395eec1eac906a580e6a12d189e" \
       -X GET "http://localhost:8001/v1/user?access_token=6b3a73aaa27f3a8495d7588fee56ab15628e64d7"
+```
+
+Or `access_token` via `Authentication` header:
+
+```sh
+$ curl \
+      -H "API-KEY: 32563b81ec7288ef87bbe39c3b7001a7bff35395eec1eac906a580e6a12d189e" \
+      -H "Authorization: Bearer 44cc7ead29d1855900c084d713ca21c9409a4675" \
+      -X GET "http://localhost:8001/v1/user"
 ```
 
 #### Get specific User by Id
@@ -115,8 +129,9 @@ Example:
 
 ```sh
 $ curl \
-      -H "API-KEY:32563b81ec7288ef87bbe39c3b7001a7bff35395eec1eac906a580e6a12d189e" \
-      -X GET "http://localhost:8001/v1/user/2?access_token=6b3a73aaa27f3a8495d7588fee56ab15628e64d7"
+      -H "API-KEY: 32563b81ec7288ef87bbe39c3b7001a7bff35395eec1eac906a580e6a12d189e" \
+      -H "Authorization: Bearer 44cc7ead29d1855900c084d713ca21c9409a4675" \
+      -X GET "http://localhost:8001/v1/user/2"
 ```
 
 **Note:** Check out `application/config.php` for change default timezone.

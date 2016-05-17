@@ -15,7 +15,8 @@ class OAuth2_api_controller extends MY_Controller {
    * Client credentials
    */
   function client_credential_post() {
-    $this->oauth->client_credentials();
+    $format = $this->response->get_default_format();
+    $this->oauth->client_credentials($format);
   }
 
 }
