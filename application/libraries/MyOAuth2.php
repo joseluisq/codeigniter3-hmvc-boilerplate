@@ -4,7 +4,12 @@
  * Extended class for OAuth2
  * Inpirated on https://github.com/grasses/codeigniter-oauth2-server
  *
- * @version   1.0.0
+ * @property OAuth2\Storage\Pdo $storage Pdo
+ * @property OAuth2\Request $request Request
+ * @property OAuth2\Server $server Server
+ * @property OAuth2\Response $response Response
+ *
+ *  @version   1.0.1
  * @author    José Luis Quintana <http://git.io/joseluisq>
  */
 class MyOAuth2 {
@@ -39,6 +44,67 @@ class MyOAuth2 {
    */
   function server() {
     return $this->server;
+  }
+
+  /**
+   * Get access_token data by access_token
+   * @param string $access_token
+   * @return array
+   */
+  function get_access_token($access_token) {
+    return $this->storage->getAccessToken($access_token);
+  }
+
+  /**
+   * Get client details by client_id
+   * @param string $client_id
+   * @return array
+   */
+  function get_client_details($client_id) {
+    return $this->storage->getClientDetails($client_id);
+  }
+
+  /**
+   * Get client details by access_token
+   * @param string $access_token
+   * @return array
+   */
+  function get_client_details_by_access_token($access_token) {
+    $client_data = NULL;
+    $access_token_details = $this->get_access_token($access_token);
+
+    if (!empty($access_token_details)) {
+      $client_id = $access_token_details['client_id'];
+      $client_data = $this->get_client_details($client_id);
+    }
+
+    return $client_data;
+  }
+
+  /**
+   * Get Client details data by incoming request
+   * @return array
+   */
+  function get_client_details_by_request() {
+    $headers = $this->request->headers;
+    $access_token = NULL;
+    $client_data = NULL;
+
+    if (!empty($headers) && isset($headers['AUTHORIZATION'])) {
+      $access_token = trim(str_replace('Bearer ', '', $headers['AUTHORIZATION']));
+    } else {
+      $query = $this->request->query;
+
+      if (!empty($query) && isset($query['access_token'])) {
+        $access_token = trim($query['access_token']);
+      }
+    }
+
+    if (!empty($access_token)) {
+      $client_data = $this->get_client_details_by_access_token($access_token);
+    }
+
+    return $client_data;
   }
 
   /**
