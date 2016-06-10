@@ -123,13 +123,10 @@ class MyAPI {
     }
 
     if ($result === FALSE) {
-      $err = new Exception(array(
-        'error_code' => curl_errno($ch),
-        'error' => array(
-          'message' => curl_error($ch),
-          'type' => 'CurlException',
-        ),
-      ));
+      $err = new \Exception(implode("\n", array(
+          'error_code' => curl_errno($ch),
+          'message' => curl_error($ch)
+      )));
 
       curl_close($ch);
 
